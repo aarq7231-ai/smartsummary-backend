@@ -3,8 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
-
-app.use(cors());
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+app.use(cors())
 app.use(express.json());
 
 app.get("/", (req, res) => {
