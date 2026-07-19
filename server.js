@@ -15,14 +15,21 @@ app.post("/summarize", async (req, res) => {
   const { text } = req.body;
 
   if (!text) {
-    return res.status(400).json({
-      error: "لم يتم إرسال أي نص"
-    });
+   return res.status(400).json({
+  error: "لم يتم إرسال أي نص"
+}); 
   }
 
-  res.json({
-    summary: "تم استلام النص بنجاح. الخطوة القادمة هي ربط الذكاء الاصطناعي لإنتاج ملخص حقيقي."
-  });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+const result = await model.generateContent(
+  "لخص النص التالي بالعربية:\n\n" + text
+);
+
+const response = await result.response;
+
+res.json({
+  summary: response.text()
 });
 
 const PORT = process.env.PORT || 3000;
