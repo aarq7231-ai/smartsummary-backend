@@ -31,7 +31,7 @@ const response = await result.response;
 res.json({
   summary: response.text()
 });
-
+}
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
