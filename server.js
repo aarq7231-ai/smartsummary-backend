@@ -32,7 +32,7 @@ app.post("/summarize", async (req, res) => {
 
     // استدعاء النموذج بالطريقة الحديثة والمستقرة
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash"
+      model: "gemini-3.6-flash"
     });
 
     const prompt = `لخص النص التالي باللغة العربية بشكل دقيق ومفهوم:\n\n${text}`;
